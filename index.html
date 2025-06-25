@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Baskı Maliyet Hesaplayıcı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,400;8..144,500;8..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="header">
+            <svg class="header-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#4f378b"><path d="M7,2H17V7H19V13H16.5L13,17H11L7.5,13H5V7H7V2M10,22H2V20H10A1,1 0 0,0 11,19V18H13V19A3,3 0 0,1 10,22M7,9V11H8.5L12,15L15.5,11H17V9H15V4H9V9H7Z"/></svg>
+            <h1>3D Baskı Maliyeti Hesaplayıcı</h1>
+        </div>
+        
+        <div class="m3-text-field">
+            <input type="number" id="filamentPrice" placeholder=" " required>
+            <label for="filamentPrice">Filament Fiyatı (₺/kg)</label>
+        </div>
+        <div class="m3-text-field">
+            <input type="number" id="printWeight" placeholder=" " required>
+            <label for="printWeight">Baskı Ağırlığı (gram)</label>
+        </div>
+
+        <hr class="m3-divider">
+
+        <div class="m3-text-field">
+            <input type="number" id="electricityPrice" placeholder=" " required>
+            <label for="electricityPrice">Elektrik Ücreti (₺/kWh)</label>
+        </div>
+        <div class="m3-text-field">
+            <input type="number" id="powerConsumption" placeholder=" " required>
+            <label for="powerConsumption">Yazıcı Güç Tüketimi (Watt)</label>
+        </div>
+        <div class="m3-text-field">
+            <input type="number" id="printTime" placeholder=" " required>
+            <label for="printTime">Baskı Süresi (Dakika)</label>
+        </div>
+
+        <hr class="m3-divider">
+        
+        <h2 class="section-title">İsteğe Bağlı: Amortisman</h2>
+        <div class="m3-text-field">
+            <input type="number" id="printerCost" placeholder=" ">
+            <label for="printerCost">Yazıcı Satın Alım Ücreti (₺)</label>
+        </div>
+        <div class="m3-text-field">
+            <input type="number" id="printerLifetime" placeholder=" ">
+            <label for="printerLifetime">Tahmini Yazıcı Ömrü (Saat)</label>
+        </div>
+
+        <button id="calculateBtn" class="m3-button">HESAPLA</button>
+
+        <div id="results" class="results-container">
+            <div class="result-item">
+                <span class="result-label">Filament Maliyeti</span>
+                <span class="result-value"><span id="filamentCostResult">0.00</span> ₺</span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Elektrik Maliyeti</span>
+                <span class="result-value"><span id="electricityCostResult">0.00</span> ₺</span>
+            </div>
+            <div class="result-item optional-result">
+                <span class="result-label">Yazıcı Amortismanı</span>
+                <span class="result-value"><span id="amortizationCostResult">0.00</span> ₺</span>
+            </div>
+            <hr class="m3-divider result-divider">
+            <div class="result-item total">
+                <span class="result-label">Toplam Maliyet</span>
+                <span class="result-value"><span id="totalCostResult">0.00</span> ₺</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

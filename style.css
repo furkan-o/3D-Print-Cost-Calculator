@@ -1,0 +1,211 @@
+/* 1. Renk ve Tipografi Tokenları */
+:root {
+    /* Ana Renk Paleti (Mor Temalı) */
+    --md-sys-color-primary: #6750A4;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #EADDFF;
+    --md-sys-color-on-primary-container: #21005E;
+    
+    /* Yüzey Renkleri */
+    --md-sys-color-surface-container: #F3EDF7;
+    --md-sys-color-surface-container-high: #ECE6F0;
+    --md-sys-color-surface-container-highest: #E6E0E9;
+    --md-sys-color-on-surface: #1C1B1F;
+    --md-sys-color-on-surface-variant: #49454E;
+
+    /* Çerçeve ve Bölücüler */
+    --md-sys-color-outline: #79747E;
+    --md-sys-color-outline-variant: #C4C7C5;
+
+    /* Font Ailesi */
+    --md-sys-font-family: 'Roboto Flex', sans-serif;
+}
+
+/* 2. Temel Sayfa Stilleri */
+body {
+    font-family: var(--md-sys-font-family);
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 16px;
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 3. Card Stili */
+.card-container {
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 8px 3px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 24px;
+}
+.header-icon {
+    width: 32px;
+    height: 32px;
+    fill: var(--md-sys-color-primary);
+}
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+h2.section-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface-variant);
+    margin: 24px 0 8px 0;
+}
+
+
+/* 4. Material 3 Metin Alanı (Outlined Text Field) */
+.m3-text-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.m3-text-field input {
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: 8px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--md-sys-color-on-surface);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.m3-text-field label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    background-color: var(--md-sys-color-surface-container-high);
+    padding: 0 4px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 16px;
+    pointer-events: none;
+    transition: top 0.2s ease, transform 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+/* Etiketin yukarı hareket etme animasyonu */
+.m3-text-field input:focus + label,
+.m3-text-field input:not(:placeholder-shown) + label {
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    color: var(--md-sys-color-primary);
+    font-weight: 500;
+}
+
+.m3-text-field input:focus {
+    border-color: var(--md-sys-color-primary);
+    border-width: 2px;
+}
+
+/* Numaralı input'lardaki okları kaldırmak için (isteğe bağlı) */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* 5. Material 3 Buton (Filled Button) */
+.m3-button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 24px; /* Tam yuvarlak kenarlar */
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.m3-button:hover {
+    box-shadow: 0 2px 6px 2px rgba(0,0,0,0.15), 0 1px 2px rgba(0,0,0,0.3);
+    background-color: #7158B8; /* Hafif aydınlık ton */
+}
+
+/* 6. Bölücü (Divider) */
+.m3-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--md-sys-color-outline-variant);
+    margin: 16px 0;
+}
+
+/* 7. Sonuç Alanı */
+.results-container {
+    margin-top: 24px;
+    padding-top: 16px;
+    display: none; /* JS ile görünür yapılacak */
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 16px;
+}
+.result-label {
+    color: var(--md-sys-color-on-surface-variant);
+}
+.result-value {
+    font-weight: 500;
+    color: var(--md-sys-color-on-surface);
+}
+
+.result-item.optional-result .result-label,
+.result-item.optional-result .result-value {
+    color: #6c6a70;
+}
+
+.result-item.total {
+    padding-top: 16px;
+}
+.result-item.total .result-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--md-sys-color-on-surface);
+}
+.result-item.total .result-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+}
+.result-divider {
+    margin: 8px 0;
+}
